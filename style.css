@@ -40,6 +40,10 @@
   cursor: pointer;
 }
 
+.small-option {
+  padding: 10px;
+}
+
 .option:hover {
   background-color: #ddd;
   font-weight: 600;
