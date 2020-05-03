@@ -23,6 +23,12 @@
   border: 1px solid #000;
   display: inline-block;
   vertical-align: top;
+  margin-bottom: 5px;
+}
+
+.cell.clickable:hover {
+  background-color: #bbb;
+  cursor: pointer;
 }
 
 .option {
@@ -32,4 +38,14 @@
   margin: 10px 20px;
   border-radius: 7px;
   cursor: pointer;
+}
+
+.option:hover {
+  background-color: #ddd;
+  font-weight: 600;
+}
+
+.selected {
+  background-color: #aaa !important;
+  font-weight: 600;
 }
