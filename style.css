@@ -1,0 +1,35 @@
+.container {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.map {
+  display: inline-block;
+  border: 11px dotted yellow;
+}
+
+.tooltip {
+  display: inline-block;
+  vertical-align: top;
+  border: 1px solid #000;
+  width: 200px;
+  height: 523px;
+  margin-top: 11px;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #000;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.option {
+  background-color: #eee;
+  padding: 20px;
+  border: 1px solid #000;
+  margin: 10px 20px;
+  border-radius: 7px;
+  cursor: pointer;
+}
