@@ -17,6 +17,16 @@
   margin-top: 11px;
 }
 
+.compass {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.compass img {
+  width: 200px;
+  transform: rotate(-45deg);
+}
+
 .cell {
   width: 100px;
   height: 100px;
