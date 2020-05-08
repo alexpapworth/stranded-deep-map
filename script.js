@@ -14,7 +14,18 @@ function selectOptionToAddToTile() {
     prepareTilesForClearing()
   }
   else {
-    prepareTilesForClicking()
+    let once;
+
+    if (this.classList.contains('big-option')) {
+      once = true
+    }
+    else {
+      once = false
+    }
+
+    console.log(once)
+
+    prepareTilesForClicking(once)
   }
 
 }
@@ -34,10 +45,16 @@ function unselectOption() {
   }
 }
 
-function prepareTilesForClicking() {
+function prepareTilesForClicking(once) {
   for (var i = 0; i < document.querySelectorAll('.cell').length; i++) {
     document.querySelectorAll('.cell')[i].classList.add('clickable')
-    document.querySelectorAll('.cell')[i].addEventListener('click', appendOptionToTile)
+    console.log(once)
+    if (once == true) {
+      document.querySelectorAll('.cell')[i].addEventListener('click', appendOptionToTileOnce)
+    }
+    else {
+      document.querySelectorAll('.cell')[i].addEventListener('click', appendOptionToTile)
+    }
   }
 }
 
@@ -45,6 +62,7 @@ function unprepareTilesForClicking() {
   for (var i = 0; i < document.querySelectorAll('.cell').length; i++) {
     document.querySelectorAll('.cell')[i].classList.remove('clickable')
     document.querySelectorAll('.cell')[i].removeEventListener('click', appendOptionToTile)
+    document.querySelectorAll('.cell')[i].removeEventListener('click', appendOptionToTileOnce)
   }
 }
 
@@ -73,6 +91,13 @@ function appendOptionToTile() {
 
   localStorage.setItem(name, value);
 }
+
+function appendOptionToTileOnce() {
+  appendOptionToTile.call(this)
+
+  unselectOption.call(document.querySelector('.option.selected'))
+}
+
 
 function clearTile() {
   this.innerText = ""
