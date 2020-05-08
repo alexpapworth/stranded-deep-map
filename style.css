@@ -41,6 +41,11 @@
   cursor: pointer;
 }
 
+.cell.clickable.red:hover {
+  background-color: #ffa3a3;
+  cursor: pointer;
+}
+
 .option {
   background-color: #eee;
   padding: 20px;
@@ -62,4 +67,13 @@
 .selected {
   background-color: #aaa !important;
   font-weight: 600;
+}
+
+.red-option:hover {
+  background-color: #ff8888;
+  font-weight: 600;
+}
+
+.red-option.selected {
+  background-color: #fd6161 !important;
 }

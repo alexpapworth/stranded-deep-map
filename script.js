@@ -10,7 +10,13 @@ function selectOptionToAddToTile() {
 
   this.classList.add('selected')
 
-  prepareTilesForClicking()
+  if (this.innerText == "Clear Tile") {
+    prepareTilesForClearing()
+  }
+  else {
+    prepareTilesForClicking()
+  }
+
 }
 
 function unselectOption() {
@@ -20,7 +26,12 @@ function unselectOption() {
   let option = this.innerText
   this.classList.remove('selected')
 
-  unprepareTilesForClicking()
+  if (this.innerText == "Clear Tile") {
+    unprepareTilesForClearing()
+  }
+  else {
+    unprepareTilesForClicking()
+  }
 }
 
 function prepareTilesForClicking() {
@@ -33,6 +44,23 @@ function prepareTilesForClicking() {
 function unprepareTilesForClicking() {
   for (var i = 0; i < document.querySelectorAll('.cell').length; i++) {
     document.querySelectorAll('.cell')[i].classList.remove('clickable')
+    document.querySelectorAll('.cell')[i].removeEventListener('click', appendOptionToTile)
+  }
+}
+
+function prepareTilesForClearing() {
+  for (var i = 0; i < document.querySelectorAll('.cell').length; i++) {
+    document.querySelectorAll('.cell')[i].classList.add('clickable')
+    document.querySelectorAll('.cell')[i].classList.add('red')
+    document.querySelectorAll('.cell')[i].addEventListener('click', clearTile)
+  }
+}
+
+function unprepareTilesForClearing() {
+  for (var i = 0; i < document.querySelectorAll('.cell').length; i++) {
+    document.querySelectorAll('.cell')[i].classList.remove('clickable')
+    document.querySelectorAll('.cell')[i].classList.remove('red')
+    document.querySelectorAll('.cell')[i].removeEventListener('click', clearTile)
   }
 }
 
@@ -44,7 +72,15 @@ function appendOptionToTile() {
   let value = JSON.stringify(this.innerText);
 
   localStorage.setItem(name, value);
-  console.log(localStorage)
+}
+
+function clearTile() {
+  this.innerText = ""
+
+  let name = "cell" + this.dataset.cellId
+  let value = JSON.stringify("");
+
+  localStorage.setItem(name, value);
 }
 
 let ready
