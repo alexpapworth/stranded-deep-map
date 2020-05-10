@@ -77,3 +77,53 @@
 .red-option.selected {
   background-color: #fd6161 !important;
 }
+
+#arrows {
+  margin-left: -25px;
+  margin-top: 30px;
+}
+
+.arrow {
+  border: solid black;
+  border-width: 0 10px 10px 0;
+  display: inline-block;
+  padding: 10px;
+  position: absolute;
+  cursor: pointer;
+}
+
+.up {
+  transform: rotate(-135deg);
+}
+
+.right {
+  transform: rotate(-45deg);
+  margin-top: 30px;
+  margin-left: 30px;
+}
+
+.down {
+  transform: rotate(45deg);
+  margin-top: 60px;
+}
+
+.left {
+  transform: rotate(135deg);
+  margin-left: -30px;
+  margin-top: 30px;
+}
+
+.middle {
+  border: solid black;
+  border-width: 3px;
+  display: inline-block;
+  padding: 3px;
+  position: absolute;
+  margin-top: 40px;
+  margin-left: 9px;
+  border-radius: 50px;
+}
+
+.arrow:hover {
+  border-color: grey;
+}
