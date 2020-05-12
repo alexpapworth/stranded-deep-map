@@ -32,7 +32,7 @@ function expand(moveNumber) {
   updateLocalStorage(temporaryArray)
 }
 
-function reduce(tiles) {
+function reduce(tiles, paddingNumber) {
   var temporaryArray = []
   
   for (var i = 0; i < tiles.length; i++) {
@@ -41,37 +41,14 @@ function reduce(tiles) {
     let value = localStorage.getItem(name)
 
     if (value) {
-      let newCellId = cellId - 100
+      let newCellId = cellId + paddingNumber
       let newName = "cell" + newCellId
 
       let object = {[newName]: value}
       temporaryArray.push(object)
 
       localStorage.removeItem(name)
-      console.log("reduce: changing "+name+" for "+newName)
-    }
-  }
-  
-  updateLocalStorage(temporaryArray)
-}
-
-function reduceExtra(tiles) {
-  var temporaryArray = []
-  
-  for (var i = 0; i < tiles.length; i++) {
-    let cellId = tiles[i]
-    let name = "cell" + cellId
-    let value = localStorage.getItem(name)
-
-    if (value) {
-      let newCellId = cellId - 200
-      let newName = "cell" + newCellId
-
-      let object = {[newName]: value}
-      temporaryArray.push(object)
-
-      localStorage.removeItem(name)
-      console.log("reduce extra: changing "+name+" for "+newName)
+      console.log("reduce: changing "+name+" for "+newName+" (difference: "+(newCellId - cellId))
     }
   }
   
@@ -79,60 +56,51 @@ function reduceExtra(tiles) {
 }
 
 function moveUp() {
+  console.log("moving up")
   let tiles = [
-     101, 102, 103, 104, 105,
-     106, 107, 108, 109, 110,
-     111, 112, 113, 114, 115,
-     116, 117, 118, 119, 120,
-     // 121, 122, 123, 124, 125 
+    1,  2,  3,  4,  5, 
+    6,  7,  8,  9,  10, 
+    11, 12, 13, 14, 15, 
+    16, 17, 18, 19, 20,
+    21, 22, 23, 24, 25, 
   ]
 
-  let extraTiles = [
-     221, 222, 223, 224, 225
-  ]
+  let moveNumber = -105
+  let paddingNumber = 100
 
-  let moveNumber = 95
-
+  reduce(tiles, paddingNumber)
   expand(moveNumber)
-  reduce(tiles)
-  reduceExtra(extraTiles)
 
   loadLocalStorage()
 }
 
 function moveRight() {
+  console.log("moving right\n")
   let tiles = [
-    /* 101, */ 102, 103, 104, 105,
-    /* 106, */ 107, 108, 109, 110,
-    /* 111, */ 112, 113, 114, 115,
-    /* 116, */ 117, 118, 119, 120,
-    /* 121, */ 122, 123, 124, 125
-  ]
-
-  let extraTiles = [
-    201,
-    206,
-    211,
-    216,
-    221
+    1,  2,  3,  4,  /* 5, */
+    6,  7,  8,  9,  /* 10, */
+    11, 12, 13, 14, /* 15, */
+    16, 17, 18, 19, /* 20,*/
+    21, 22, 23, 24, /* 25, */
   ]
 
   let moveNumber = 101
+  let paddingNumber = -100
 
+  reduce(tiles, paddingNumber)
   expand(moveNumber)
-  reduce(tiles)
-  reduceExtra(extraTiles)
 
   loadLocalStorage()
 }
 
 function moveDown() {
+  console.log("moving down")
   let tiles = [
-    // 101, 102, 103, 104, 105
-    106, 107, 108, 109, 110,
-    111, 112, 113, 114, 115,
-    116, 117, 118, 119, 120,
-    121, 122, 123, 124, 125
+    1,  2,  3,  4,  5, 
+    6,  7,  8,  9,  10, 
+    11, 12, 13, 14, 15, 
+    16, 17, 18, 19, 20,
+    21, 22, 23, 24, 25, 
   ]
 
   let extraTiles = [
@@ -140,36 +108,29 @@ function moveDown() {
   ]
 
   let moveNumber = 105
+  let paddingNumber = -100
 
+  reduce(tiles, paddingNumber)
   expand(moveNumber)
-  reduce(tiles)
-  reduceExtra(extraTiles)
 
   loadLocalStorage()
 }
 
 function moveLeft() {
+  console.log("moving left")
   let tiles = [
-    101, 102, 103, 104, /* 105, */
-    106, 107, 108, 109, /* 110, */
-    111, 112, 113, 114, /* 115, */
-    116, 117, 118, 119, /* 120, */
-    121, 122, 123, 124, /* 125  */
+    /*1, */  2,  3,  4,  5, 
+    /*6, */  7,  8,  9,  10, 
+    /*11, */ 12, 13, 14, 15, 
+    /*16, */ 17, 18, 19, 20,
+    /*21, */ 22, 23, 24, 25, 
   ]
 
-  let extraTiles = [
-    205, 
-    210, 
-    215, 
-    220, 
-    225
-  ]
+  let moveNumber = -101
+  let paddingNumber = 100
 
-  let moveNumber = 99
-
+  reduce(tiles, paddingNumber)
   expand(moveNumber)
-  reduce(tiles)
-  reduceExtra(extraTiles)
 
   loadLocalStorage()
 }
